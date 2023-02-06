@@ -1,8 +1,8 @@
 import torchvision
 import torch
 
-class GLP_model:
-    """GLP_model pretrained using vgg19_bn model"""
+class CGLP_model:
+    """CGLP_model pretrained using vgg19_bn model"""
     def __init__(self, device = 'cuda') -> None:
         # model
         self.device = device
