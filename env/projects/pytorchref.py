@@ -69,6 +69,7 @@ matrix multiplication:
     hidden : 10 
     matrix multiplication bc last layer linear
     mat1 and mat2 shapes cannot be multiplied (32x2560 and 10x3) -> (32x2560 and 2560x3)
+
 # improving model
 1. Add more layer
     1.1 nn.linear
@@ -134,6 +135,24 @@ etc. refer to documentation
 5. Retrain
 
 # Object Detection
+1. get a pretrained model
+2 setup dataset 
+    2.1 create dataset class
+    2.2 get img path list and label path list
+    2.3 __getitem__ - convert each imagepath[idx] to tensor
+    2.4 get bounding box coordinates xmin ymin xmax ymax
+    2.5 return img(in tensor) , target(bounding boxes & other info dict)
+    2.7 __len__ return len(img path list)
+3. dataloader use collate_fn if __getitem__ returns list or tuple
+4. finetune pretrained model
+5. train prediction gives loss value 
+6. validate using cv2/PIL
+    6.1 get img path and open
+    6.2 convert img to tensor 
+        6.2.1 change to rgb format
+        6.2.2 change to (N,C,H,W) Format
+    6.3 get boxes and score 
+    6.4 create rectangle on image based on conditional score
 
 
 """
